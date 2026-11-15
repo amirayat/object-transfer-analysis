@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pt
+results/*
+!results/.gitkeep
+data/yolo/
+runs/

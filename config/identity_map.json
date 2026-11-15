@@ -1,0 +1,39 @@
+
+{
+  "video_id": "demo2",
+  "identities": [
+    {
+      "object_id": "object_001",
+      "class_name": "book",
+      "tracker_ids": ["book_41", "book_53"],
+      "identity_status": "verified",
+      "notes": "Red book seen moving from the man's hand to the woman's hand. A detection gap exists between these track fragments; do not fill missing frames."
+    },
+    {
+      "object_id": "person_001",
+      "class_name": "person",
+      "tracker_ids": ["person_3", "person_28"],
+      "identity_status": "verified",
+      "active_ranges": [
+        {
+          "tracker_id": "person_3",
+          "first_frame": 0,
+          "last_frame": 55
+        },
+        {
+          "tracker_id": "person_28",
+          "first_frame": 56,
+          "last_frame": 293
+        }
+      ],
+      "notes": "Man. Use person_3 before frame 56 and person_28 afterward."
+    },
+    {
+      "object_id": "person_002",
+      "class_name": "person",
+      "tracker_ids": ["person_1"],
+      "identity_status": "verified",
+      "notes": "Woman holding the transferred book after the exchange."
+    }
+  ]
+}

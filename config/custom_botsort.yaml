@@ -1,0 +1,23 @@
+
+tracker_type: botsort
+
+# Detection association
+track_high_thresh: 0.25
+track_low_thresh: 0.10
+new_track_thresh: 0.25
+
+# Retain lost tracks for 50 frames
+track_buffer: 50
+
+# Association
+match_thresh: 0.8
+fuse_score: true
+
+# Camera motion compensation
+gmc_method: sparseOptFlow
+
+# Appearance-based re-identification
+with_reid: true
+proximity_thresh: 0.5
+appearance_thresh: 0.8
+model: auto
