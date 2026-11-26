@@ -1,14 +1,6 @@
 {
   "video_id": "IMG_1589",
   "scenario": "simple_handover",
-<<<<<<< HEAD
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
-=======
   "annotation_status": "ANNOTATED",
   "people": [
     {
@@ -58,5 +50,4 @@
     }
   ],
   "notes": "Person B initially holds the book. The handover begins at 2.2 seconds. Both people touch the book at approximately 0.4 seconds. Person C takes possession by 2.6 seconds."
->>>>>>> 362d53b (Amir annotation)
 }

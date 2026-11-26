@@ -1,14 +1,6 @@
 {
   "video_id": "IMG_1592",
   "scenario": "chain_a_b_c",
-<<<<<<< HEAD
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
-=======
   "annotation_status": "ANNOTATED",
   "people": [
     {
@@ -83,5 +75,4 @@
     }
   ],
   "notes": "Person A initially holds the book. The handover begins at 1.85 seconds. Both people touch the book at approximately 0.65 seconds. Person B takes possession by 2.5 seconds to second 4.65. The second handover begins at 4.65 seconds. Both people touch the book at approximately 0.65 seconds. Person C takes possession from second 5.2 to second 6.46."
->>>>>>> 362d53b (Amir annotation)
 }

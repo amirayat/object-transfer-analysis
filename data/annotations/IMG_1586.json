@@ -4,30 +4,16 @@
   "annotation_status": "ANNOTATED",
   "people": [
     {
-<<<<<<< HEAD
-      "person_id": "person_A",
-      "description": "Initial book holder (identify by appearance or starting position after video review)"
-    },
-    {
-      "person_id": "person_B",
-      "description": "Book receiver (identify by appearance or starting position after video review)"
-=======
       "person_id": "person_A"
     },
     {
       "person_id": "person_B"
->>>>>>> 362d53b (Amir annotation)
     }
   ],
   "objects": [
     {
       "object_id": "object_A",
-<<<<<<< HEAD
-      "class_name": "book",
-      "description": "Book transferred from person_A to person_B"
-=======
       "class_name": "book"
->>>>>>> 362d53b (Amir annotation)
     }
   ],
   "possession_intervals": [
@@ -36,34 +22,20 @@
       "holder_id": "person_A",
       "status": "HELD",
       "start_sec": 0.0,
-<<<<<<< HEAD
-      "end_sec": 3.0
-=======
       "end_sec": 2.5
->>>>>>> 362d53b (Amir annotation)
     },
     {
       "object_id": "object_A",
       "holder_id": null,
       "status": "UNKNOWN",
-<<<<<<< HEAD
-      "start_sec": 3.0,
-      "end_sec": 4.0,
-      "interaction": "BOTH_TOUCHING"
-=======
       "start_sec": 2.5,
       "end_sec": 3.5
->>>>>>> 362d53b (Amir annotation)
     },
     {
       "object_id": "object_A",
       "holder_id": "person_B",
       "status": "HELD",
-<<<<<<< HEAD
-      "start_sec": 4.0,
-=======
       "start_sec": 3.5,
->>>>>>> 362d53b (Amir annotation)
       "end_sec": 5.0
     }
   ],
@@ -73,18 +45,9 @@
       "object_id": "object_A",
       "from_person_id": "person_A",
       "to_person_id": "person_B",
-<<<<<<< HEAD
-      "start_sec": 1.0,
-      "end_sec": 4.0
-    }
-  ],
-  "notes": "User-described timings interpreted as 00:01, 00:03 and 00:04 (1s, 3s and 4s). Person A initially holds the book. Handover starts around 1s; both participants touch the book around 3s to 4s; Person B takes control by 4s. Review exact boundaries against the original clip."
-}
-=======
       "start_sec": 2.5,
       "end_sec": 3.5
     }
   ],
   "notes": "Person A initially holds the book. The handover begins at 2.5 seconds. Both people touch the book at approximately 1.0 seconds. Person B takes possession by 3.5 seconds."
 }
->>>>>>> 362d53b (Amir annotation)
