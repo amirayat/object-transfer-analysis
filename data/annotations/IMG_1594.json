@@ -1,10 +1,95 @@
 {
   "video_id": "IMG_1594",
   "scenario": "two_objects",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Person on the left"
+    },
+    {
+      "person_id": "person_B",
+      "description": "Person in the middle"
+    },
+    {
+      "person_id": "person_C",
+      "description": "Person on the right"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_B",
+      "class_name": "book",
+      "description": "The book being transferred from person A to person B, and then from person B to person C"
+    },
+    {
+      "object_id": "object_C",
+      "class_name": "black_bottle",
+      "description": "The black bottle placed on the table not being transferred."
+    },
+    {
+      "object_id": "object_D",
+      "class_name": "black_book",
+      "description": "The black book on the edge of the table, not being transferred."
+    }
+
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_B",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 0.0,
+      "end_sec": 3.4
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "TRANSFERRED",
+      "start_sec": 3.5,
+      "end_sec": 3.9,
+      "interaction": "BOTH HOLDING"
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": "person_B",
+      "status": "HELD",
+      "start_sec": 4.0,
+      "end_sec": 5.3
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "TRANSFERRED",
+      "start_sec": 5.3,
+      "end_sec": 6.0,
+      "interaction": "BOTH HOLDING"
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": "person_C",
+      "status": "HELD",
+      "start_sec": 6.1,
+      "end_sec": 7.7
+    }
+  ],
+  "events": [
+    {
+      "event_type": "SIMPLE_HANDOVER_ONE_OBJECT",
+      "object_id": "object_B",
+      "from_person_id": "person_A",
+      "to_person_id": "person_B",
+      "start_sec": 3.5,
+      "end_sec": 3.9
+    },
+    {
+      "event_type": "SIMPLE_HANDOVER_ONE_OBJECT",
+      "object_id": "object_B",
+      "from_person_id": "person_B",
+      "to_person_id": "person_C",
+      "start_sec": 5.3,
+      "end_sec": 6.0
+    }
+  ],
+  "notes": "Three perosn chain handover. Person A hands over the book to person B, who then hands it over to person C. with two other objects in the scene that are not being transferred."
 }

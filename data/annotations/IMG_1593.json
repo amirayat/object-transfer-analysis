@@ -1,10 +1,84 @@
 {
   "video_id": "IMG_1593",
-  "scenario": "chain_a_b_c",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "scenario": "simple_handover",
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Person on the left"
+    },
+    {
+      "person_id": "person_B",
+      "description": "Person in the middle"
+    },
+    {
+      "person_id": "person_C",
+      "description": "Person on the right"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_B",
+      "class_name": "book",
+      "description": "The book being transferred from person C to person B, and then from person B to person A"
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_B",
+      "holder_id": "person_C",
+      "status": "HELD",
+      "start_sec": 0.0,
+      "end_sec": 1.6
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "TRANSFERRED",
+      "start_sec": 1.7,
+      "end_sec": 2.5,
+      "interaction": "BOTH HOLDING"
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": "person_B",
+      "status": "HELD",
+      "start_sec": 2.5,
+      "end_sec": 4.0
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "TRANSFERRED",
+      "start_sec": 4.1,
+      "end_sec": 4.6,
+      "interaction": "BOTH HOLDING"
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 4.7,
+      "end_sec": 5.8
+    }
+  ],
+  "events": [
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_B",
+      "from_person_id": "person_C",
+      "to_person_id": "person_B",
+      "start_sec": 1.7,
+      "end_sec": 2.5
+    },
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_B",
+      "from_person_id": "person_B",
+      "to_person_id": "person_A",
+      "start_sec": 4.1,
+      "end_sec": 4.6
+    }
+  ],
+  "notes": "Three perosn chain handover. Person C hands over the book to person B, who then hands it over to person A."
 }
