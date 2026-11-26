@@ -1,0 +1,128 @@
+{
+  "video_id": "IMG_1604",
+  "review_required": true,
+  "note": "Events and possession intervals are model-derived; UNKNOWN is not absence of transfer.",
+  "objects": [
+    {
+      "object_id": "object_001",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 148,
+        "HELD:person_001": 4
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 12,
+          "start_sec": 0.0,
+          "end_sec": 0.4
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 13,
+          "last_frame": 16,
+          "start_sec": 0.433333,
+          "end_sec": 0.533333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 17,
+          "last_frame": 151,
+          "start_sec": 0.566667,
+          "end_sec": 5.033333
+        }
+      ],
+      "detected_events": []
+    },
+    {
+      "object_id": "object_002",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 148,
+        "HELD:person_002": 4
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 102,
+          "start_sec": 0.0,
+          "end_sec": 3.4
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_002",
+          "first_frame": 103,
+          "last_frame": 106,
+          "start_sec": 3.433333,
+          "end_sec": 3.533333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 107,
+          "last_frame": 151,
+          "start_sec": 3.566667,
+          "end_sec": 5.033333
+        }
+      ],
+      "detected_events": []
+    },
+    {
+      "object_id": "object_003",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 129,
+        "HELD:person_003": 23
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 124,
+          "start_sec": 0.0,
+          "end_sec": 4.133333
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_003",
+          "first_frame": 125,
+          "last_frame": 143,
+          "start_sec": 4.166667,
+          "end_sec": 4.766667
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 144,
+          "last_frame": 144,
+          "start_sec": 4.8,
+          "end_sec": 4.8
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_003",
+          "first_frame": 145,
+          "last_frame": 148,
+          "start_sec": 4.833333,
+          "end_sec": 4.933333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 149,
+          "last_frame": 151,
+          "start_sec": 4.966667,
+          "end_sec": 5.033333
+        }
+      ],
+      "detected_events": []
+    }
+  ]
+}

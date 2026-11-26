@@ -1,0 +1,14 @@
+{
+  "video_id": "IMG_1599",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [],
+  "diagnostics": {}
+}

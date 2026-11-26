@@ -1,0 +1,88 @@
+{
+  "video_id": "IMG_1592",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [
+    {
+      "event_id": "event_001",
+      "video_id": "IMG_1592",
+      "object_id": "object_003",
+      "event_type": "HANDOVER",
+      "from_person_id": "person_002",
+      "to_person_id": "person_001",
+      "start_time_sec": 4.433,
+      "end_time_sec": 4.633,
+      "confidence": 0.7,
+      "validation_status": "PROVISIONAL",
+      "review_required": true,
+      "evidence": {
+        "stable_before_frames": 12,
+        "stable_after_frames": 7,
+        "transition_gap_sec": 0.2,
+        "two_people_near_object": true,
+        "direct_transfer_evidence": false,
+        "method": "temporal_rules"
+      }
+    }
+  ],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {
+        "person_003": 37
+      },
+      "unknown_frames": 157,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_003",
+          "from_sec": 0.0,
+          "to_sec": 1.2,
+          "held_observations": 37
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {
+        "person_002": 4
+      },
+      "unknown_frames": 190,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_003": {
+      "held_frame_counts": {
+        "person_001": 12,
+        "person_002": 12
+      },
+      "unknown_frames": 170,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_002",
+          "from_sec": 4.067,
+          "to_sec": 4.433,
+          "held_observations": 12
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 4.633,
+          "to_sec": 4.833,
+          "held_observations": 7
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 5.067,
+          "to_sec": 5.233,
+          "held_observations": 5
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

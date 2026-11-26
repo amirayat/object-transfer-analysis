@@ -1,0 +1,47 @@
+{
+  "video_id": "IMG_1586",
+  "fps": 30.0,
+  "width": 1920,
+  "height": 1080,
+  "total_frames": 151,
+  "duration_sec": 5.033,
+  "model": "yolo11s.pt",
+  "tracker": "botsort.yaml",
+  "imgsz": 960,
+  "conf": 0.15,
+  "target_classes": [
+    0,
+    39,
+    41,
+    73
+  ],
+  "tracks": [
+    {
+      "track_id": "book_3",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 116,
+      "frames_detected": 116,
+      "mean_confidence": 0.555,
+      "path_length_px": 889.5
+    },
+    {
+      "track_id": "person_1",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 150,
+      "frames_detected": 151,
+      "mean_confidence": 0.942,
+      "path_length_px": 411.1
+    },
+    {
+      "track_id": "person_2",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 150,
+      "frames_detected": 151,
+      "mean_confidence": 0.924,
+      "path_length_px": 529.5
+    }
+  ]
+}

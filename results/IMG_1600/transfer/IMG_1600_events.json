@@ -1,0 +1,36 @@
+{
+  "video_id": "IMG_1600",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {},
+      "unknown_frames": 113,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {
+        "person_001": 16
+      },
+      "unknown_frames": 97,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_001",
+          "from_sec": 3.367,
+          "to_sec": 3.733,
+          "held_observations": 12
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

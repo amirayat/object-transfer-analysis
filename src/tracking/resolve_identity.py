@@ -1,133 +1,170 @@
-"""Resolve verified YOLO/BoT-SORT identities and export verified entities.
+"""Assign provisional per-video identities, optionally applying a verified manual map.
 
-Run from your project root:
-    python src/tracking/resolve_identity.py
+No supplied identity map is reused by default. This prevents demo2 IDs being
+silently applied to new recordings. Provisional IDs are NOT verified physical
+identities; a tracker ID switch can split a real person/object into two IDs.
 
-Optional overrides:
-    python src/tracking/resolve_identity.py --tracks PATH --identity-map PATH \
-        --output PATH --entities-output PATH
-
-IMPORTANT: config/identity_map.json must refer to the SAME tracking run as --tracks.
+Example:
+ python src/tracking/resolve_identity.py --tracks results/IMG_1586/tracking/IMG_1586_tracks.jsonl \
+   --output results/IMG_1586/tracking/IMG_1586_resolved.jsonl \
+   --entities-output results/IMG_1586/tracking/IMG_1586_entities.jsonl
 """
-
+from __future__ import annotations
 import argparse
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
 
-def arguments():
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--tracks", type=Path,
-                   default=Path("results/tracking/demo2_tracks.jsonl"))
-    p.add_argument("--identity-map", type=Path,
-                   default=Path("config/identity_map.json"))
-    p.add_argument("--output", type=Path,
-                   default=Path("results/tracking/demo2_resolved.jsonl"))
-    p.add_argument("--entities-output", type=Path,
-                   default=Path("results/tracking/demo2_entities.jsonl"))
-    return p.parse_args()
+def raw_key(track: dict) -> tuple[str, int | str]:
+    """Keep persons separate from objects, but tolerate book <-> cup switches."""
+    n = track.get('tracker_numeric_id')
+    if n is None:
+        # Earlier tracking exports only had e.g. 'book_40'.
+        n = track['track_id'].rsplit('_', 1)[-1]
+    entity_type = 'person' if track['class_name'] == 'person' else 'object'
+    return entity_type, str(n)
 
 
-def mapping_for_verified(config):
-    # raw tracker id -> list[(first_frame, last_frame, permanent_id, class_name)]
+def verified_mapping(config: dict, video_id: str):
+    if not config:
+        return defaultdict(list)
+    if config.get('video_id') != video_id:
+        raise ValueError(f'Identity map belongs to {config.get("video_id")!r}, not {video_id!r}')
     lookup = defaultdict(list)
-    for entity in config.get("identities", []):
-        if entity.get("identity_status") != "verified":
+    for e in config.get('identities', []):
+        if e.get('identity_status') != 'verified':
             continue
-        stable_id = entity["object_id"]
-        class_name = entity["class_name"]
-        tracker_ids = entity["tracker_ids"]
-        ranges = entity.get("active_ranges") or [
-            {"tracker_id": tid, "first_frame": 0, "last_frame": 10**12}
-            for tid in tracker_ids
-        ]
-        for span in ranges:
-            raw_id = span["tracker_id"]
-            if raw_id not in tracker_ids:
-                raise ValueError(f"{raw_id} is not in tracker_ids for {stable_id}")
-            first = int(span["first_frame"])
-            last = int(span["last_frame"])
-            if first > last:
-                raise ValueError(f"Invalid frame range for {raw_id}: {first}-{last}")
-            lookup[raw_id].append((first, last, stable_id, class_name))
+        intervals = e.get('active_ranges') or [
+            {'tracker_id': tid, 'first_frame': 0, 'last_frame': 10**12}
+            for tid in e['tracker_ids']]
+        for span in intervals:
+            raw = span['tracker_id']
+            if raw not in e['tracker_ids']:
+                raise ValueError(f'{raw} not in tracker_ids for {e["object_id"]}')
+            lookup[raw].append((int(span['first_frame']), int(span['last_frame']),
+                                e['object_id'], e['class_name']))
     return lookup
 
 
 def main():
-    args = arguments()
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--tracks', type=Path, required=True)
+    p.add_argument('--identity-map', type=Path, help='OPTIONAL verified map for this exact video and tracking run')
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--entities-output', type=Path, required=True)
+    p.add_argument('--min-track-frames', type=int, default=3, help='Exclude 1-2 frame spurious tracks (not a detection-quality guarantee)')
+    args = p.parse_args()
     if not args.tracks.is_file():
-        raise FileNotFoundError(f"Tracking file not found: {args.tracks}")
-    if not args.identity_map.is_file():
-        raise FileNotFoundError(f"Identity map not found: {args.identity_map}")
-    config = json.loads(args.identity_map.read_text(encoding="utf-8"))
-    lookup = mapping_for_verified(config)
+        p.error(f'Missing tracking file: {args.tracks}')
+    if args.min_track_frames < 1:
+        p.error('--min-track-frames must be >= 1')
 
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.entities_output.parent.mkdir(parents=True, exist_ok=True)
-    stats = Counter()
-    frames = 0
-
-    with args.tracks.open("r", encoding="utf-8") as src, \
-         args.output.open("w", encoding="utf-8") as all_out, \
-         args.entities_output.open("w", encoding="utf-8") as entities_out:
+    # First pass, track ID counts and dominant object type per raw numeric ID.
+    observations = Counter()
+    class_votes = defaultdict(Counter)
+    first_frame = {}
+    video_id = None
+    count_frames = 0
+    with args.tracks.open(encoding='utf-8') as src:
         for line in src:
             if not line.strip():
                 continue
             frame = json.loads(line)
-            frame_idx = int(frame["frame_index"])
-            if frame["video_id"] != config["video_id"]:
-                raise ValueError("Video ID differs between tracking and identity map")
+            video_id = video_id or frame['video_id']
+            if frame['video_id'] != video_id:
+                raise ValueError('Tracking JSONL cannot contain multiple video IDs')
+            count_frames += 1
+            for tr in frame['tracks']:
+                key = raw_key(tr)
+                observations[key] += 1
+                class_votes[key][tr['class_name']] += 1
+                first_frame.setdefault(key, frame['frame_index'])
+    if not count_frames:
+        raise ValueError('Empty tracking file')
 
-            verified_tracks = []
-            seen_ids = set()
-            for raw_track in frame["tracks"]:
-                track = dict(raw_track)
-                raw_id = track["track_id"]
-                matches = [rule for rule in lookup.get(raw_id, [])
-                           if rule[0] <= frame_idx <= rule[1]
-                           and rule[3] == track["class_name"]]
+    config = json.loads(args.identity_map.read_text(encoding='utf-8')) if args.identity_map else {}
+    manual = verified_mapping(config, video_id)
+    eligible = sorted((key for key, n in observations.items() if n >= args.min_track_frames),
+                      key=lambda key: (first_frame[key], key[0], int(key[1]) if key[1].isdigit() else key[1]))
+    manual_ids = {rule[2] for rules in manual.values() for rule in rules}
+    allocated = set(manual_ids)
+    provisional = {}
+    counter = Counter()
+    for key in eligible:
+        kind = key[0]
+        while True:
+            counter[kind] += 1
+            name = f'person_{counter[kind]:03d}' if kind == 'person' else f'object_{counter[kind]:03d}'
+            if name not in allocated:
+                break
+        allocated.add(name)
+        provisional[key] = name
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.entities_output.parent.mkdir(parents=True, exist_ok=True)
+    reported = Counter()
+    verified_ids_seen = set()
+    with args.tracks.open(encoding='utf-8') as src, \
+         args.output.open('w', encoding='utf-8') as all_out, \
+         args.entities_output.open('w', encoding='utf-8') as entity_out:
+        for line in src:
+            if not line.strip():
+                continue
+            frame = json.loads(line)
+            seen = set()
+            resolved = []
+            entity_tracks = []
+            idx = int(frame['frame_index'])
+            for track in frame['tracks']:
+                tr = dict(track)
+                raw_id = tr['track_id']
+                matches = [m for m in manual.get(raw_id, [])
+                           if m[0] <= idx <= m[1] and m[3] == tr['class_name']]
                 if len(matches) > 1:
-                    raise ValueError(f"Ambiguous mapping: {raw_id} at frame {frame_idx}")
+                    raise ValueError(f'Ambiguous verified map for {raw_id} at frame {idx}')
+                key = raw_key(tr)
                 if matches:
-                    permanent_id = matches[0][2]
-                    if permanent_id in seen_ids:
-                        raise ValueError(
-                            f"Two simultaneous detections mapped to {permanent_id} "
-                            f"at frame {frame_idx}; review active_ranges"
-                        )
-                    seen_ids.add(permanent_id)
-                    track["object_id"] = permanent_id
-                    track["identity_status"] = "verified"
-                    verified_tracks.append(track)
-                    stats[permanent_id] += 1
+                    tr['object_id'] = matches[0][2]
+                    tr['identity_status'] = 'verified'
+                    verified_ids_seen.add(tr['object_id'])
+                elif key in provisional:
+                    tr['object_id'] = provisional[key]
+                    tr['identity_status'] = 'provisional'
                 else:
-                    track["object_id"] = None
-                    track["identity_status"] = "unmapped"
-                # Preserve original detections, including unmapped ones
-                raw_track.update({"object_id": track["object_id"],
-                                  "identity_status": track["identity_status"]})
+                    tr['object_id'] = None
+                    tr['identity_status'] = 'unmapped'
+                tr['identity_strategy'] = 'manual_map' if matches else ('tracker_id_only' if tr['object_id'] else 'excluded_short_track')
+                if tr['object_id']:
+                    if tr['object_id'] in seen:
+                        raise ValueError(f'Multiple tracks mapped to {tr["object_id"]} at frame {idx}')
+                    seen.add(tr['object_id'])
+                    entity_tracks.append(tr)
+                    reported[tr['object_id']] += 1
+                resolved.append(tr)
+            all_out.write(json.dumps({**frame, 'tracks': resolved}, ensure_ascii=False) + '\n')
+            entity_out.write(json.dumps({**frame, 'tracks': entity_tracks}, ensure_ascii=False) + '\n')
 
-            all_out.write(json.dumps(frame) + "\n")
-            entities_out.write(json.dumps({
-                "video_id": frame["video_id"],
-                "frame_index": frame_idx,
-                "timestamp_sec": frame["timestamp_sec"],
-                "tracks": verified_tracks,
-            }) + "\n")
-            frames += 1
+    summary_path = args.entities_output.with_name(f'{video_id}_identity_summary.json')
+    summary = {
+        'video_id': video_id,
+        'frames': count_frames,
+        'mapped_detection_counts': dict(sorted(reported.items())),
+        'verified_ids_observed': sorted(verified_ids_seen),
+        'warning': 'Provisional IDs correspond to tracker fragments, not necessarily stable physical identities.',
+        'provisional_tracks': [
+            {'raw_key': f'{kind}:{num}', 'object_id': provisional[(kind, num)],
+             'observations': observations[(kind, num)],
+             'dominant_class': class_votes[(kind, num)].most_common(1)[0][0]}
+            for kind, num in eligible],
+    }
+    summary_path.write_text(json.dumps(summary, indent=2), encoding='utf-8')
+    print(f'{video_id}: {count_frames} frames; {len(provisional)} provisional track identities, '
+          f'{len(verified_ids_seen)} verified identities observed')
+    print('Entities:', args.entities_output)
+    print('Identity summary:', summary_path)
+    print('WARNING: automatic raw-track identities do not stitch ID switches.')
 
-    print(f"Processed {frames} frames")
-    for entity_id, count in sorted(stats.items()):
-        print(f"  {entity_id}: {count} verified detections")
-    print(f"All tracks: {args.output}")
-    print(f"Verified entities only: {args.entities_output}")
-    if stats.get("object_001", 0) == 0:
-        print("WARNING: object_001 has zero verified detections. Make sure "
-              "the identity map refers to THIS BoT-SORT tracking run.")
-    if not any(id.startswith("person_") for id in stats):
-        print("WARNING: No verified people. Map the giver and receiver before pose estimation.")
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

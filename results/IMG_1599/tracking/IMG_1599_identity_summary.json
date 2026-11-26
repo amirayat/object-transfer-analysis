@@ -1,0 +1,17 @@
+{
+  "video_id": "IMG_1599",
+  "frames": 79,
+  "mapped_detection_counts": {
+    "person_001": 79
+  },
+  "verified_ids_observed": [],
+  "warning": "Provisional IDs correspond to tracker fragments, not necessarily stable physical identities.",
+  "provisional_tracks": [
+    {
+      "raw_key": "person:1",
+      "object_id": "person_001",
+      "observations": 79,
+      "dominant_class": "person"
+    }
+  ]
+}

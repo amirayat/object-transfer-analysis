@@ -1,14 +1,14 @@
 """Pose + wrist-to-object proximity baseline for persistent identities.
 
-Consumes the identity-resolved JSONL (demo2_entities.jsonl), not raw tracker IDs.
+Consumes per-video identity-resolved JSONL, not raw tracker IDs.
+Supports multiple objects automatically; provisional tracker-fragment IDs are not verified.
 This is NOT proof of physical holding. Manual inspection is required.
 
 Example from the project root:
 python src/interaction/estimate_possession.py \
-  --video data/videos/demo2.mp4 \
-  --tracks results/tracking/demo2_entities.jsonl \
-  --object-id object_001 \
-  --pose-imgsz 960
+  --video data/raw_videos/IMG_1586.MOV \
+  --tracks results/IMG_1586/tracking/IMG_1586_entities.jsonl \
+  --pose-imgsz 640
 """
 from __future__ import annotations
 
@@ -115,6 +115,10 @@ def main():
     p.add_argument("--min-wrist-conf", type=float, default=0.35)
     p.add_argument("--hand-gap-ratio", type=float, default=0.10)
     p.add_argument("--output-dir", type=Path, default=Path("results/interaction"))
+    p.add_argument("--infer-unheld", action="store_true",
+                   help="Experimental: treat a stationary object outside person boxes, away from visible wrists, as UNHELD")
+    p.add_argument("--unheld-min-frames", type=int, default=8)
+    p.add_argument("--unheld-motion-px", type=float, default=12.0)
     args = p.parse_args()
 
     import cv2
@@ -133,7 +137,7 @@ def main():
                         if obj["class_name"] != "person" and obj.get("object_id"):
                             object_ids.add(obj["object_id"])
     if not object_ids:
-        p.error("No stable object IDs found. Check identity_map.json and resolved entities JSONL")
+        print("WARNING: no tracked object identities. Writing empty possession records rather than inventing transfers.")
 
     # Fail fast: an --object-id argument by itself must NOT count as evidence
     # that the corresponding object exists in the input. Check mapped tracks
@@ -161,19 +165,15 @@ def main():
     absent_objects = object_ids - detected_objects
     if absent_objects:
         p.error(
-            "No verified detections for requested object ID(s): "
+            "No mapped detections for requested object ID(s): "
             + ", ".join(sorted(absent_objects))
             + ". The JSONL may have object_id: null everywhere. "
-            "Regenerate resolved identities and use demo2_entities.jsonl "
-            "or demo2_resolved_verified.jsonl."
+            "Check this video's identity-resolved JSONL."
         )
     if not detected_people:
-        p.error(
-            "No persistent person identities found in --tracks. "
-            "Create a verified person mapping before possession estimation."
-        )
+        print("WARNING: no tracked person identities; possession will remain UNKNOWN")
     print(
-        "Validated mapped entities: "
+        "Validated candidate identities (may be provisional): "
         f"objects={sorted(detected_objects)}, "
         f"persons={sorted(detected_people)}, "
         f"frames_with_requested_object={matched_frames}"
@@ -198,8 +198,11 @@ def main():
         cap.release()
         raise RuntimeError("Could not open output VideoWriter")
 
-    from ultralytics import YOLO
-    model = YOLO(args.pose_model)
+    model = None
+    if detected_people and detected_objects:
+        from ultralytics import YOLO
+        model = YOLO(args.pose_model)
+    recent_centers = {}
     count = 0
     try:
         with args.tracks.open("r", encoding="utf-8") as src, \
@@ -219,9 +222,12 @@ def main():
                            if t["class_name"] != "person" and t.get("object_id")
                            and t["object_id"] in object_ids}
 
-                pose_result = model.predict(frame, conf=0.30,
-                                            imgsz=args.pose_imgsz, verbose=False)[0]
-                wrists = assign_pose_to_people(people, pose_result, args.min_iou)
+                if model is not None and people:
+                    pose_result = model.predict(frame, conf=0.30,
+                                                imgsz=args.pose_imgsz, verbose=False)[0]
+                    wrists = assign_pose_to_people(people, pose_result, args.min_iou)
+                else:
+                    wrists = {}
                 for person in people:
                     name = person["object_id"]
                     for w in wrists.get(name, []):
@@ -236,6 +242,7 @@ def main():
                 for oid in sorted(object_ids):
                     if oid not in objects:
                         records.append({"object_id": oid, "holder_id": None,
+                                        "class_name": None,
                                         "status": "UNKNOWN", "confidence": None,
                                         "object_detected": False,
                                         "reason": "object_not_detected",
@@ -245,7 +252,23 @@ def main():
                     box = xyxy(obj["bbox"])
                     holder, status, reason, candidates = estimate(
                         box, people, wrists, args.hand_gap_ratio, args.min_wrist_conf)
+                    center = ((box[0] + box[2]) / 2, (box[1] + box[3]) / 2)
+                    history = recent_centers.setdefault(oid, [])
+                    history.append((count, center))
+                    if len(history) > args.unheld_min_frames:
+                        del history[:-args.unheld_min_frames]
+                    # Optional experimental UNHELD: needs a stationary object,
+                    # visible wrists far from object, and no overlap with people.
+                    if (args.infer_unheld and status == "UNKNOWN"
+                            and reason == "wrists_not_near_object"
+                            and len(history) >= args.unheld_min_frames
+                            and history[-1][0] - history[0][0] == args.unheld_min_frames - 1
+                            and max(math.dist(center, point) for _, point in history)
+                            <= args.unheld_motion_px
+                            and all(box_iou(box, xyxy(p["bbox"])) < 0.01 for p in people)):
+                        status, reason = "UNHELD", "stationary_outside_people_provisional"
                     records.append({"object_id": oid, "holder_id": holder,
+                                    "class_name": obj["class_name"],
                                     "status": status, "confidence": None,
                                     "object_detected": True,
                                     "reason": reason, "candidates": candidates})
@@ -272,7 +295,7 @@ def main():
     print(f"Processed {count} frames")
     print(f"Saved proximity estimates: {out_jsonl}")
     print(f"Saved annotated preview: {out_video}")
-    print("CAUTION: HELD is only a wrist-proximity hypothesis; verify visually.")
+    print("CAUTION: HELD and optional UNHELD are only geometric hypotheses; review all events.")
 
 
 if __name__ == "__main__":

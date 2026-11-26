@@ -1,0 +1,71 @@
+{
+  "video_id": "IMG_1594",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [
+    {
+      "event_id": "event_001",
+      "video_id": "IMG_1594",
+      "object_id": "object_002",
+      "event_type": "HANDOVER",
+      "from_person_id": "person_003",
+      "to_person_id": "person_001",
+      "start_time_sec": 2.833,
+      "end_time_sec": 2.933,
+      "confidence": 0.8,
+      "validation_status": "PROVISIONAL",
+      "review_required": true,
+      "evidence": {
+        "stable_before_frames": 23,
+        "stable_after_frames": 72,
+        "transition_gap_sec": 0.1,
+        "two_people_near_object": true,
+        "direct_transfer_evidence": false,
+        "method": "temporal_rules"
+      }
+    }
+  ],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {},
+      "unknown_frames": 234,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {
+        "person_001": 74,
+        "person_003": 63
+      },
+      "unknown_frames": 97,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_003",
+          "from_sec": 0.6,
+          "to_sec": 1.9,
+          "held_observations": 40
+        },
+        {
+          "holder_id": "person_003",
+          "from_sec": 2.1,
+          "to_sec": 2.833,
+          "held_observations": 23
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 2.933,
+          "to_sec": 5.433,
+          "held_observations": 72
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

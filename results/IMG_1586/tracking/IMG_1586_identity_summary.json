@@ -1,0 +1,31 @@
+{
+  "video_id": "IMG_1586",
+  "frames": 151,
+  "mapped_detection_counts": {
+    "object_001": 116,
+    "person_001": 151,
+    "person_002": 151
+  },
+  "verified_ids_observed": [],
+  "warning": "Provisional IDs correspond to tracker fragments, not necessarily stable physical identities.",
+  "provisional_tracks": [
+    {
+      "raw_key": "object:3",
+      "object_id": "object_001",
+      "observations": 116,
+      "dominant_class": "book"
+    },
+    {
+      "raw_key": "person:1",
+      "object_id": "person_001",
+      "observations": 151,
+      "dominant_class": "person"
+    },
+    {
+      "raw_key": "person:2",
+      "object_id": "person_002",
+      "observations": 151,
+      "dominant_class": "person"
+    }
+  ]
+}

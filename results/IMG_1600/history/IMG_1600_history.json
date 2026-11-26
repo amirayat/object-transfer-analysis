@@ -1,0 +1,68 @@
+{
+  "video_id": "IMG_1600",
+  "review_required": true,
+  "note": "Events and possession intervals are model-derived; UNKNOWN is not absence of transfer.",
+  "objects": [
+    {
+      "object_id": "object_001",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 113
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 112,
+          "start_sec": 0.0,
+          "end_sec": 3.733333
+        }
+      ],
+      "detected_events": []
+    },
+    {
+      "object_id": "object_002",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 97,
+        "HELD:person_001": 16
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 90,
+          "start_sec": 0.0,
+          "end_sec": 3.0
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 91,
+          "last_frame": 94,
+          "start_sec": 3.033333,
+          "end_sec": 3.133333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 95,
+          "last_frame": 100,
+          "start_sec": 3.166667,
+          "end_sec": 3.333333
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 101,
+          "last_frame": 112,
+          "start_sec": 3.366667,
+          "end_sec": 3.733333
+        }
+      ],
+      "detected_events": []
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "video_id": "IMG_1596",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [
+    {
+      "event_id": "event_001",
+      "video_id": "IMG_1596",
+      "object_id": "object_002",
+      "event_type": "HANDOVER",
+      "from_person_id": "person_003",
+      "to_person_id": "person_001",
+      "start_time_sec": 0.967,
+      "end_time_sec": 1.1,
+      "confidence": 0.7,
+      "validation_status": "PROVISIONAL",
+      "review_required": true,
+      "evidence": {
+        "stable_before_frames": 29,
+        "stable_after_frames": 8,
+        "transition_gap_sec": 0.133,
+        "two_people_near_object": true,
+        "direct_transfer_evidence": false,
+        "method": "temporal_rules"
+      }
+    }
+  ],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {},
+      "unknown_frames": 161,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {
+        "person_001": 26,
+        "person_003": 29
+      },
+      "unknown_frames": 106,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_003",
+          "from_sec": 0.0,
+          "to_sec": 0.967,
+          "held_observations": 29
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 1.1,
+          "to_sec": 1.4,
+          "held_observations": 8
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 1.667,
+          "to_sec": 1.8,
+          "held_observations": 5
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 2.233,
+          "to_sec": 2.633,
+          "held_observations": 13
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_003": {
+      "held_frame_counts": {
+        "person_001": 3,
+        "person_002": 48
+      },
+      "unknown_frames": 110,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_002",
+          "from_sec": 3.5,
+          "to_sec": 4.067,
+          "held_observations": 15
+        },
+        {
+          "holder_id": "person_002",
+          "from_sec": 4.267,
+          "to_sec": 5.333,
+          "held_observations": 33
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

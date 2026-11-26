@@ -1,0 +1,83 @@
+{
+  "video_id": "IMG_1596",
+  "fps": 30.0,
+  "width": 1920,
+  "height": 1080,
+  "total_frames": 161,
+  "duration_sec": 5.367,
+  "model": "yolo11s.pt",
+  "tracker": "botsort.yaml",
+  "imgsz": 960,
+  "conf": 0.15,
+  "target_classes": [
+    0,
+    39,
+    41,
+    73
+  ],
+  "tracks": [
+    {
+      "track_id": "book_14",
+      "class_name": "book",
+      "first_frame": 96,
+      "last_frame": 160,
+      "frames_detected": 60,
+      "mean_confidence": 0.49,
+      "path_length_px": 342.2
+    },
+    {
+      "track_id": "book_5",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 79,
+      "frames_detected": 58,
+      "mean_confidence": 0.484,
+      "path_length_px": 332.3
+    },
+    {
+      "track_id": "book_9",
+      "class_name": "book",
+      "first_frame": 84,
+      "last_frame": 85,
+      "frames_detected": 2,
+      "mean_confidence": 0.424,
+      "path_length_px": 12.5
+    },
+    {
+      "track_id": "bottle_4",
+      "class_name": "bottle",
+      "first_frame": 0,
+      "last_frame": 160,
+      "frames_detected": 161,
+      "mean_confidence": 0.891,
+      "path_length_px": 70.5
+    },
+    {
+      "track_id": "person_1",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 160,
+      "frames_detected": 161,
+      "mean_confidence": 0.936,
+      "path_length_px": 315.0
+    },
+    {
+      "track_id": "person_2",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 160,
+      "frames_detected": 161,
+      "mean_confidence": 0.932,
+      "path_length_px": 248.0
+    },
+    {
+      "track_id": "person_3",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 160,
+      "frames_detected": 161,
+      "mean_confidence": 0.949,
+      "path_length_px": 337.2
+    }
+  ]
+}

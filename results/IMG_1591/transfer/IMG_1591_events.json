@@ -1,0 +1,80 @@
+{
+  "video_id": "IMG_1591",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [
+    {
+      "event_id": "event_001",
+      "video_id": "IMG_1591",
+      "object_id": "object_001",
+      "event_type": "HANDOVER",
+      "from_person_id": "person_001",
+      "to_person_id": "person_002",
+      "start_time_sec": 0.9,
+      "end_time_sec": 1.667,
+      "confidence": 0.8,
+      "validation_status": "PROVISIONAL",
+      "review_required": true,
+      "evidence": {
+        "stable_before_frames": 28,
+        "stable_after_frames": 42,
+        "transition_gap_sec": 0.767,
+        "two_people_near_object": true,
+        "direct_transfer_evidence": false,
+        "method": "temporal_rules"
+      }
+    }
+  ],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {
+        "person_001": 28,
+        "person_002": 46
+      },
+      "unknown_frames": 105,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_001",
+          "from_sec": 0.0,
+          "to_sec": 0.9,
+          "held_observations": 28
+        },
+        {
+          "holder_id": "person_002",
+          "from_sec": 1.667,
+          "to_sec": 3.033,
+          "held_observations": 42
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {},
+      "unknown_frames": 179,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_003": {
+      "held_frame_counts": {
+        "person_003": 8
+      },
+      "unknown_frames": 171,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_003",
+          "from_sec": 5.7,
+          "to_sec": 5.933,
+          "held_observations": 8
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

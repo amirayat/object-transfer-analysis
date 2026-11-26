@@ -1,0 +1,52 @@
+{
+  "video_id": "IMG_1605",
+  "frames": 136,
+  "mapped_detection_counts": {
+    "object_001": 8,
+    "object_002": 3,
+    "object_003": 30,
+    "person_001": 136,
+    "person_002": 136,
+    "person_003": 136
+  },
+  "verified_ids_observed": [],
+  "warning": "Provisional IDs correspond to tracker fragments, not necessarily stable physical identities.",
+  "provisional_tracks": [
+    {
+      "raw_key": "object:4",
+      "object_id": "object_001",
+      "observations": 8,
+      "dominant_class": "book"
+    },
+    {
+      "raw_key": "person:1",
+      "object_id": "person_001",
+      "observations": 136,
+      "dominant_class": "person"
+    },
+    {
+      "raw_key": "person:2",
+      "object_id": "person_002",
+      "observations": 136,
+      "dominant_class": "person"
+    },
+    {
+      "raw_key": "person:3",
+      "object_id": "person_003",
+      "observations": 136,
+      "dominant_class": "person"
+    },
+    {
+      "raw_key": "object:5",
+      "object_id": "object_002",
+      "observations": 3,
+      "dominant_class": "book"
+    },
+    {
+      "raw_key": "object:8",
+      "object_id": "object_003",
+      "observations": 30,
+      "dominant_class": "book"
+    }
+  ]
+}

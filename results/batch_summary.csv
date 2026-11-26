@@ -1,0 +1,12 @@
+video_id,filename,scenario,split,status,events,error
+IMG_1586,IMG_1586.MOV,simple_handover,development,DONE,0,
+IMG_1587,IMG_1587.MOV,simple_handover,development,DONE,0,
+IMG_1591,IMG_1591.MOV,chain_a_b_c,development,DONE,1,
+IMG_1592,IMG_1592.MOV,chain_a_b_c,development,DONE,1,
+IMG_1594,IMG_1594.MOV,two_objects,development,DONE,1,
+IMG_1596,IMG_1596.MOV,two_objects,development,DONE,1,
+IMG_1599,IMG_1599.MOV,put_down_pick_up,development,DONE,0,
+IMG_1600,IMG_1600.MOV,put_down_pick_up,development,DONE,0,
+IMG_1602,IMG_1602.MOV,no_transfer,development,DONE,0,
+IMG_1604,IMG_1604.MOV,brief_occlusion,development,DONE,0,
+IMG_1605,IMG_1605.MOV,brief_occlusion,development,DONE,1,

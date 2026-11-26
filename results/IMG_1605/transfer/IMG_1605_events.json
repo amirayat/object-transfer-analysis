@@ -1,0 +1,82 @@
+{
+  "video_id": "IMG_1605",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [
+    {
+      "event_id": "event_001",
+      "video_id": "IMG_1605",
+      "object_id": "object_003",
+      "event_type": "HANDOVER",
+      "from_person_id": "person_003",
+      "to_person_id": "person_001",
+      "start_time_sec": 2.0,
+      "end_time_sec": 2.067,
+      "confidence": 0.7,
+      "validation_status": "PROVISIONAL",
+      "review_required": true,
+      "evidence": {
+        "stable_before_frames": 20,
+        "stable_after_frames": 9,
+        "transition_gap_sec": 0.067,
+        "two_people_near_object": true,
+        "direct_transfer_evidence": false,
+        "method": "temporal_rules"
+      }
+    }
+  ],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {
+        "person_002": 8
+      },
+      "unknown_frames": 128,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_002",
+          "from_sec": 0.0,
+          "to_sec": 0.233,
+          "held_observations": 8
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_002": {
+      "held_frame_counts": {
+        "person_003": 2
+      },
+      "unknown_frames": 134,
+      "stable_held_runs": [],
+      "ignored_long_or_ambiguous_transitions": 0
+    },
+    "object_003": {
+      "held_frame_counts": {
+        "person_001": 9,
+        "person_003": 20
+      },
+      "unknown_frames": 107,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_003",
+          "from_sec": 1.367,
+          "to_sec": 2.0,
+          "held_observations": 20
+        },
+        {
+          "holder_id": "person_001",
+          "from_sec": 2.067,
+          "to_sec": 2.333,
+          "held_observations": 9
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

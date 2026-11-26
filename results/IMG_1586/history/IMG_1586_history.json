@@ -1,0 +1,89 @@
+{
+  "video_id": "IMG_1586",
+  "review_required": true,
+  "note": "Events and possession intervals are model-derived; UNKNOWN is not absence of transfer.",
+  "objects": [
+    {
+      "object_id": "object_001",
+      "class_name": "book",
+      "observation_counts": {
+        "HELD:person_002": 68,
+        "UNKNOWN": 64,
+        "HELD:person_001": 19
+      },
+      "possession_intervals": [
+        {
+          "status": "HELD",
+          "holder_id": "person_002",
+          "first_frame": 0,
+          "last_frame": 61,
+          "start_sec": 0.0,
+          "end_sec": 2.033333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 62,
+          "last_frame": 62,
+          "start_sec": 2.066667,
+          "end_sec": 2.066667
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_002",
+          "first_frame": 63,
+          "last_frame": 68,
+          "start_sec": 2.1,
+          "end_sec": 2.266667
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 69,
+          "last_frame": 97,
+          "start_sec": 2.3,
+          "end_sec": 3.233333
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 98,
+          "last_frame": 116,
+          "start_sec": 3.266667,
+          "end_sec": 3.866667
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 117,
+          "last_frame": 150,
+          "start_sec": 3.9,
+          "end_sec": 5.0
+        }
+      ],
+      "detected_events": [
+        {
+          "event_id": "event_001",
+          "video_id": "IMG_1586",
+          "object_id": "object_001",
+          "event_type": "HANDOVER",
+          "from_person_id": "person_002",
+          "to_person_id": "person_001",
+          "start_time_sec": 2.267,
+          "end_time_sec": 3.267,
+          "confidence": 0.8,
+          "validation_status": "PROVISIONAL",
+          "review_required": true,
+          "evidence": {
+            "stable_before_frames": 68,
+            "stable_after_frames": 19,
+            "transition_gap_sec": 1.0,
+            "two_people_near_object": true,
+            "direct_transfer_evidence": false,
+            "method": "temporal_rules"
+          }
+        }
+      ]
+    }
+  ]
+}

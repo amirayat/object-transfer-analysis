@@ -1,0 +1,2 @@
+event_id,video_id,object_id,event_type,from_person_id,to_person_id,start_time_sec,end_time_sec,confidence,validation_status,review_required
+event_001,IMG_1605,object_003,HANDOVER,person_003,person_001,2.0,2.067,0.7,PROVISIONAL,True

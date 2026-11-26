@@ -1,0 +1,36 @@
+{
+  "video_id": "demo2",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 0.8,
+    "cooldown_sec": 0.6
+  },
+  "events": [],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {
+        "person_002": 46
+      },
+      "unknown_frames": 281,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_002",
+          "from_sec": 6.2,
+          "to_sec": 7.0,
+          "held_observations": 21
+        },
+        {
+          "holder_id": "person_002",
+          "from_sec": 11.12,
+          "to_sec": 11.96,
+          "held_observations": 21
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

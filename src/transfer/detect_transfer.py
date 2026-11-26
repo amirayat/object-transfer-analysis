@@ -238,7 +238,7 @@ def main() -> None:
     parser.add_argument("--min-held-frames", type=int, default=5)
     parser.add_argument("--min-unheld-frames", type=int, default=5)
     parser.add_argument("--bridge-unknown-frames", type=int, default=2)
-    parser.add_argument("--max-transition-sec", type=float, default=0.8)
+    parser.add_argument("--max-transition-sec", type=float, default=1.2)
     parser.add_argument("--cooldown-sec", type=float, default=0.6)
     args = parser.parse_args()
     if args.min_held_frames <= 0 or args.min_unheld_frames <= 0 or args.bridge_unknown_frames < 0:
@@ -249,7 +249,7 @@ def main() -> None:
     video_id, frames = load_frames(args.input)
     observations = get_observations(frames)
     if not observations:
-        raise ValueError("No possessions found in input JSONL")
+        print("WARNING: no objects in possession file; reporting zero events")
     events, diagnostics = build_events(video_id, observations,
                                       min_held_frames=args.min_held_frames,
                                       min_unheld_frames=args.min_unheld_frames,

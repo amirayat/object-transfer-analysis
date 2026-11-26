@@ -1,7 +1,7 @@
-"""Track people and selected objects in a video using YOLO11 + ByteTrack.
+"""Track people and COCO objects in one video using YOLO11 + BoT-SORT/ByteTrack.
 
 Run from the project root:
-    python src/tracking/run_tracking.py --video data/videos/demo2.mp4
+    python src/tracking/run_tracking.py --video data/raw_videos/IMG_1586.MOV
 
 Outputs:
     results/tracking/<video_stem>_tracked.mp4
@@ -19,24 +19,26 @@ from ultralytics import YOLO
 
 
 # COCO class IDs: person=0, bottle=39, cup=41, book=73
-#TARGET_CLASSES = [0, 39, 41, 73]
-TARGET_CLASSES = [0,73]
+TARGET_CLASSES = [0, 39, 41, 73]
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="YOLO object detection and tracking")
-    parser.add_argument("--video", type=Path, default=Path("data/videos/demo2.mp4"))
+    parser.add_argument("--video", type=Path, default=None)
     parser.add_argument("--model", default="yolo11s.pt")
     parser.add_argument("--imgsz", type=int, default=1280)
     parser.add_argument("--conf", type=float, default=0.15)
-    parser.add_argument("--tracker", default="bytetrack.yaml")
+    parser.add_argument("--tracker", default="botsort.yaml")
     parser.add_argument("--output", type=Path, default=Path("results/tracking"))
     parser.add_argument("--classes", type=int, nargs="+", default=TARGET_CLASSES)
+    parser.add_argument("--max-frames", type=int, default=0, help="Optional short smoke test; 0 processes whole video")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+    if args.video is None:
+        raise ValueError("Pass --video, e.g. data/raw_videos/IMG_1586.MOV")
     if not args.video.is_file():
         raise FileNotFoundError(f"Input video not found: {args.video}")
     if not 0 < args.conf <= 1:
@@ -77,6 +79,8 @@ def main():
                 if not success:
                     break
 
+                if args.max_frames and frame_index >= args.max_frames:
+                    break
                 result = model.track(
                     source=frame,
                     persist=True,  # carry tracks across video frames
@@ -106,6 +110,7 @@ def main():
                         tracks.append(
                             {
                                 "track_id": track_id,
+                                "tracker_numeric_id": int(tracker_id),
                                 "class_name": class_name,
                                 "bbox": bbox,
                                 "confidence": float(confidence),
@@ -184,6 +189,7 @@ def main():
         "tracker": args.tracker,
         "imgsz": args.imgsz,
         "conf": args.conf,
+        "target_classes": args.classes,
         "tracks": summary_tracks,
     }
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")

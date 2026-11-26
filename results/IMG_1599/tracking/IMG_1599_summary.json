@@ -1,0 +1,29 @@
+{
+  "video_id": "IMG_1599",
+  "fps": 30.0,
+  "width": 1080,
+  "height": 1920,
+  "total_frames": 79,
+  "duration_sec": 2.633,
+  "model": "yolo11s.pt",
+  "tracker": "botsort.yaml",
+  "imgsz": 960,
+  "conf": 0.15,
+  "target_classes": [
+    0,
+    39,
+    41,
+    73
+  ],
+  "tracks": [
+    {
+      "track_id": "person_1",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 78,
+      "frames_detected": 79,
+      "mean_confidence": 0.876,
+      "path_length_px": 80.8
+    }
+  ]
+}

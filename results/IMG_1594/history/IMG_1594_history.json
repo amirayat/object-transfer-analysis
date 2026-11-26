@@ -1,0 +1,179 @@
+{
+  "video_id": "IMG_1594",
+  "review_required": true,
+  "note": "Events and possession intervals are model-derived; UNKNOWN is not absence of transfer.",
+  "objects": [
+    {
+      "object_id": "object_001",
+      "class_name": "bottle",
+      "observation_counts": {
+        "UNKNOWN": 234
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 233,
+          "start_sec": 0.0,
+          "end_sec": 7.766667
+        }
+      ],
+      "detected_events": []
+    },
+    {
+      "object_id": "object_002",
+      "class_name": "book",
+      "observation_counts": {
+        "UNKNOWN": 97,
+        "HELD:person_003": 63,
+        "HELD:person_001": 74
+      },
+      "possession_intervals": [
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 0,
+          "last_frame": 17,
+          "start_sec": 0.0,
+          "end_sec": 0.566667
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_003",
+          "first_frame": 18,
+          "last_frame": 57,
+          "start_sec": 0.6,
+          "end_sec": 1.9
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 58,
+          "last_frame": 62,
+          "start_sec": 1.933333,
+          "end_sec": 2.066667
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_003",
+          "first_frame": 63,
+          "last_frame": 85,
+          "start_sec": 2.1,
+          "end_sec": 2.833333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 86,
+          "last_frame": 87,
+          "start_sec": 2.866667,
+          "end_sec": 2.9
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 88,
+          "last_frame": 115,
+          "start_sec": 2.933333,
+          "end_sec": 3.833333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 116,
+          "last_frame": 117,
+          "start_sec": 3.866667,
+          "end_sec": 3.9
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 118,
+          "last_frame": 139,
+          "start_sec": 3.933333,
+          "end_sec": 4.633333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 140,
+          "last_frame": 141,
+          "start_sec": 4.666667,
+          "end_sec": 4.7
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 142,
+          "last_frame": 163,
+          "start_sec": 4.733333,
+          "end_sec": 5.433333
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 164,
+          "last_frame": 167,
+          "start_sec": 5.466667,
+          "end_sec": 5.566667
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 168,
+          "last_frame": 168,
+          "start_sec": 5.6,
+          "end_sec": 5.6
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 169,
+          "last_frame": 169,
+          "start_sec": 5.633333,
+          "end_sec": 5.633333
+        },
+        {
+          "status": "HELD",
+          "holder_id": "person_001",
+          "first_frame": 170,
+          "last_frame": 170,
+          "start_sec": 5.666667,
+          "end_sec": 5.666667
+        },
+        {
+          "status": "UNKNOWN",
+          "holder_id": null,
+          "first_frame": 171,
+          "last_frame": 233,
+          "start_sec": 5.7,
+          "end_sec": 7.766667
+        }
+      ],
+      "detected_events": [
+        {
+          "event_id": "event_001",
+          "video_id": "IMG_1594",
+          "object_id": "object_002",
+          "event_type": "HANDOVER",
+          "from_person_id": "person_003",
+          "to_person_id": "person_001",
+          "start_time_sec": 2.833,
+          "end_time_sec": 2.933,
+          "confidence": 0.8,
+          "validation_status": "PROVISIONAL",
+          "review_required": true,
+          "evidence": {
+            "stable_before_frames": 23,
+            "stable_after_frames": 72,
+            "transition_gap_sec": 0.1,
+            "two_people_near_object": true,
+            "direct_transfer_evidence": false,
+            "method": "temporal_rules"
+          }
+        }
+      ]
+    }
+  ]
+}

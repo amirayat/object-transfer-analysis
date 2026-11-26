@@ -1,0 +1,30 @@
+{
+  "video_id": "IMG_1587",
+  "method": "temporal_rule_based",
+  "all_events_are_review_required": true,
+  "settings": {
+    "min_held_frames": 5,
+    "min_unheld_frames": 5,
+    "bridge_unknown_frames": 2,
+    "max_transition_sec": 1.2,
+    "cooldown_sec": 0.6
+  },
+  "events": [],
+  "diagnostics": {
+    "object_001": {
+      "held_frame_counts": {
+        "person_001": 48
+      },
+      "unknown_frames": 103,
+      "stable_held_runs": [
+        {
+          "holder_id": "person_001",
+          "from_sec": 3.433,
+          "to_sec": 5.0,
+          "held_observations": 48
+        }
+      ],
+      "ignored_long_or_ambiguous_transitions": 0
+    }
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "video_id": "demo2",
+  "fps": 25.0,
+  "width": 720,
+  "height": 1280,
+  "total_frames": 327,
+  "duration_sec": 13.08,
+  "model": "yolo11m.pt",
+  "tracker": "config/custom_botsort.yaml",
+  "imgsz": 1280,
+  "conf": 0.1,
+  "tracks": [
+    {
+      "track_id": "book_10",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.291,
+      "path_length_px": 110.4
+    },
+    {
+      "track_id": "book_12",
+      "class_name": "book",
+      "first_frame": 10,
+      "last_frame": 12,
+      "frames_detected": 3,
+      "mean_confidence": 0.175,
+      "path_length_px": 0.8
+    },
+    {
+      "track_id": "book_13",
+      "class_name": "book",
+      "first_frame": 11,
+      "last_frame": 326,
+      "frames_detected": 316,
+      "mean_confidence": 0.31,
+      "path_length_px": 158.9
+    },
+    {
+      "track_id": "book_17",
+      "class_name": "book",
+      "first_frame": 84,
+      "last_frame": 283,
+      "frames_detected": 200,
+      "mean_confidence": 0.269,
+      "path_length_px": 41.6
+    },
+    {
+      "track_id": "book_18",
+      "class_name": "book",
+      "first_frame": 102,
+      "last_frame": 228,
+      "frames_detected": 127,
+      "mean_confidence": 0.169,
+      "path_length_px": 25.7
+    },
+    {
+      "track_id": "book_19",
+      "class_name": "book",
+      "first_frame": 111,
+      "last_frame": 120,
+      "frames_detected": 10,
+      "mean_confidence": 0.46,
+      "path_length_px": 48.6
+    },
+    {
+      "track_id": "book_20",
+      "class_name": "book",
+      "first_frame": 132,
+      "last_frame": 299,
+      "frames_detected": 116,
+      "mean_confidence": 0.602,
+      "path_length_px": 621.5
+    },
+    {
+      "track_id": "book_23",
+      "class_name": "book",
+      "first_frame": 153,
+      "last_frame": 326,
+      "frames_detected": 174,
+      "mean_confidence": 0.385,
+      "path_length_px": 61.2
+    },
+    {
+      "track_id": "book_25",
+      "class_name": "book",
+      "first_frame": 167,
+      "last_frame": 230,
+      "frames_detected": 64,
+      "mean_confidence": 0.198,
+      "path_length_px": 7.4
+    },
+    {
+      "track_id": "book_26",
+      "class_name": "book",
+      "first_frame": 172,
+      "last_frame": 203,
+      "frames_detected": 32,
+      "mean_confidence": 0.18,
+      "path_length_px": 5.3
+    },
+    {
+      "track_id": "book_27",
+      "class_name": "book",
+      "first_frame": 177,
+      "last_frame": 326,
+      "frames_detected": 150,
+      "mean_confidence": 0.39,
+      "path_length_px": 61.8
+    },
+    {
+      "track_id": "book_29",
+      "class_name": "book",
+      "first_frame": 230,
+      "last_frame": 322,
+      "frames_detected": 84,
+      "mean_confidence": 0.311,
+      "path_length_px": 35.3
+    },
+    {
+      "track_id": "book_3",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.529,
+      "path_length_px": 108.5
+    },
+    {
+      "track_id": "book_30",
+      "class_name": "book",
+      "first_frame": 230,
+      "last_frame": 309,
+      "frames_detected": 63,
+      "mean_confidence": 0.187,
+      "path_length_px": 27.5
+    },
+    {
+      "track_id": "book_31",
+      "class_name": "book",
+      "first_frame": 247,
+      "last_frame": 271,
+      "frames_detected": 25,
+      "mean_confidence": 0.172,
+      "path_length_px": 7.4
+    },
+    {
+      "track_id": "book_35",
+      "class_name": "book",
+      "first_frame": 290,
+      "last_frame": 313,
+      "frames_detected": 24,
+      "mean_confidence": 0.225,
+      "path_length_px": 11.0
+    },
+    {
+      "track_id": "book_4",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 162,
+      "frames_detected": 163,
+      "mean_confidence": 0.401,
+      "path_length_px": 80.3
+    },
+    {
+      "track_id": "book_5",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.429,
+      "path_length_px": 109.8
+    },
+    {
+      "track_id": "book_6",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.425,
+      "path_length_px": 120.8
+    },
+    {
+      "track_id": "book_7",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 107,
+      "frames_detected": 108,
+      "mean_confidence": 0.302,
+      "path_length_px": 50.5
+    },
+    {
+      "track_id": "book_8",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.404,
+      "path_length_px": 133.7
+    },
+    {
+      "track_id": "book_9",
+      "class_name": "book",
+      "first_frame": 0,
+      "last_frame": 326,
+      "frames_detected": 327,
+      "mean_confidence": 0.392,
+      "path_length_px": 137.5
+    },
+    {
+      "track_id": "person_1",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 317,
+      "frames_detected": 318,
+      "mean_confidence": 0.7,
+      "path_length_px": 3327.3
+    },
+    {
+      "track_id": "person_14",
+      "class_name": "person",
+      "first_frame": 15,
+      "last_frame": 194,
+      "frames_detected": 160,
+      "mean_confidence": 0.658,
+      "path_length_px": 1166.1
+    },
+    {
+      "track_id": "person_16",
+      "class_name": "person",
+      "first_frame": 51,
+      "last_frame": 296,
+      "frames_detected": 240,
+      "mean_confidence": 0.662,
+      "path_length_px": 1787.1
+    },
+    {
+      "track_id": "person_2",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 27,
+      "frames_detected": 28,
+      "mean_confidence": 0.496,
+      "path_length_px": 336.1
+    },
+    {
+      "track_id": "person_32",
+      "class_name": "person",
+      "first_frame": 249,
+      "last_frame": 301,
+      "frames_detected": 40,
+      "mean_confidence": 0.472,
+      "path_length_px": 397.1
+    },
+    {
+      "track_id": "person_37",
+      "class_name": "person",
+      "first_frame": 295,
+      "last_frame": 296,
+      "frames_detected": 2,
+      "mean_confidence": 0.229,
+      "path_length_px": 109.5
+    },
+    {
+      "track_id": "person_38",
+      "class_name": "person",
+      "first_frame": 300,
+      "last_frame": 309,
+      "frames_detected": 9,
+      "mean_confidence": 0.201,
+      "path_length_px": 208.8
+    }
+  ]
+}

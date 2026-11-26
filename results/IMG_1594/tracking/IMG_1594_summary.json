@@ -1,0 +1,92 @@
+{
+  "video_id": "IMG_1594",
+  "fps": 30.0,
+  "width": 1920,
+  "height": 1080,
+  "total_frames": 234,
+  "duration_sec": 7.8,
+  "model": "yolo11s.pt",
+  "tracker": "botsort.yaml",
+  "imgsz": 960,
+  "conf": 0.15,
+  "target_classes": [
+    0,
+    39,
+    41,
+    73
+  ],
+  "tracks": [
+    {
+      "track_id": "book_14",
+      "class_name": "book",
+      "first_frame": 18,
+      "last_frame": 151,
+      "frames_detected": 119,
+      "mean_confidence": 0.477,
+      "path_length_px": 540.6
+    },
+    {
+      "track_id": "book_17",
+      "class_name": "book",
+      "first_frame": 193,
+      "last_frame": 194,
+      "frames_detected": 2,
+      "mean_confidence": 0.334,
+      "path_length_px": 7.8
+    },
+    {
+      "track_id": "bottle_14",
+      "class_name": "bottle",
+      "first_frame": 152,
+      "last_frame": 170,
+      "frames_detected": 19,
+      "mean_confidence": 0.44,
+      "path_length_px": 58.7
+    },
+    {
+      "track_id": "bottle_4",
+      "class_name": "bottle",
+      "first_frame": 0,
+      "last_frame": 233,
+      "frames_detected": 234,
+      "mean_confidence": 0.883,
+      "path_length_px": 79.5
+    },
+    {
+      "track_id": "cup_14",
+      "class_name": "cup",
+      "first_frame": 49,
+      "last_frame": 67,
+      "frames_detected": 6,
+      "mean_confidence": 0.213,
+      "path_length_px": 1.8
+    },
+    {
+      "track_id": "person_1",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 233,
+      "frames_detected": 234,
+      "mean_confidence": 0.938,
+      "path_length_px": 280.3
+    },
+    {
+      "track_id": "person_2",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 233,
+      "frames_detected": 234,
+      "mean_confidence": 0.943,
+      "path_length_px": 320.0
+    },
+    {
+      "track_id": "person_3",
+      "class_name": "person",
+      "first_frame": 0,
+      "last_frame": 233,
+      "frames_detected": 234,
+      "mean_confidence": 0.938,
+      "path_length_px": 352.2
+    }
+  ]
+}

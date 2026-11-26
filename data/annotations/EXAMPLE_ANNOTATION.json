@@ -1,0 +1,11 @@
+{
+  "video_id": "IMG_1586",
+  "scenario": "simple_handover",
+  "annotation_status": "NOT_ANNOTATED",
+  "annotator": null,
+  "objects": null,
+  "people": null,
+  "possession_intervals": null,
+  "events": null,
+  "notes": "Replace with actual labels after reviewing the original video. Use events: [] only after confirming there are no events."
+}
