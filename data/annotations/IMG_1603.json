@@ -52,15 +52,6 @@
       "end_sec": 2.7
     }
   ],
-  "events": [
-    {
-      "event_type": null,
-      "object_id": null,
-      "from_person_id": null,
-      "to_person_id": null,
-      "start_sec": 0.0,
-      "end_sec": 2.7
-    }
-  ],
+  "events": [  ],
   "notes": "Three objects on the table, two books and a bottle. Two persons close to the objects, but not touching the objects. Person A walks past person B"
 }

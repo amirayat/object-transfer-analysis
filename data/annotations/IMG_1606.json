@@ -52,5 +52,5 @@
       "end_sec": 3.0
     }
   ],
-  "notes": "Three persons behind the table. Initially, person A holds the book. Person A hands the book over to person C at 1.3 seconds. The handover lasts until 1.9 seconds. Person C holds the object until 3.6 seconds. Person B hand the object to person B at 3.6 seconds. The second handover lasts until 4.1 seconds. Person B holds the object until 5.1 seconds."
+  "notes": "Two person stay close to a pillar. person_A, on the right, hands over the object_A to person_B, on the left. The book is hidden behind the pillar, from second 0.1 until second 1.2, when it reappears and gets transfered."
 }

@@ -56,15 +56,6 @@
       "end_sec": 2.7
     }
   ],
-  "events": [
-    {
-      "event_type": null,
-      "object_id": null,
-      "from_person_id": null,
-      "to_person_id": null,
-      "start_sec": 0.0,
-      "end_sec": 2.7
-    }
-  ],
+  "events": [  ],
   "notes": "Three objects on the table, two books and a bottle. Three persons are standing close to the objects and interacting with one another, but they are not touching the objects."
 }
