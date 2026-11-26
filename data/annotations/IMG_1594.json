@@ -45,10 +45,10 @@
     {
       "object_id": "object_B",
       "holder_id": null,
-      "status": "TRANSFERRED",
+      "status": "UNKNOWN",
       "start_sec": 3.5,
       "end_sec": 3.9,
-      "interaction": "BOTH HOLDING"
+      "interaction": "BOTH_TOUCHING"
     },
     {
       "object_id": "object_B",
@@ -60,10 +60,10 @@
     {
       "object_id": "object_B",
       "holder_id": null,
-      "status": "TRANSFERRED",
+      "status": "UNKNOWN",
       "start_sec": 5.3,
       "end_sec": 6.0,
-      "interaction": "BOTH HOLDING"
+      "interaction": "BOTH_TOUCHING"
     },
     {
       "object_id": "object_B",
@@ -75,7 +75,7 @@
   ],
   "events": [
     {
-      "event_type": "SIMPLE_HANDOVER_ONE_OBJECT",
+      "event_type": "HANDOVER",
       "object_id": "object_B",
       "from_person_id": "person_A",
       "to_person_id": "person_B",
@@ -83,7 +83,7 @@
       "end_sec": 3.9
     },
     {
-      "event_type": "SIMPLE_HANDOVER_ONE_OBJECT",
+      "event_type": "HANDOVER",
       "object_id": "object_B",
       "from_person_id": "person_B",
       "to_person_id": "person_C",

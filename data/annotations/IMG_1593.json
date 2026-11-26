@@ -34,10 +34,10 @@
     {
       "object_id": "object_B",
       "holder_id": null,
-      "status": "TRANSFERRED",
+      "status": "UNKNOWN",
       "start_sec": 1.7,
       "end_sec": 2.5,
-      "interaction": "BOTH HOLDING"
+      "interaction": "BOTH_TOUCHING"
     },
     {
       "object_id": "object_B",
@@ -49,10 +49,10 @@
     {
       "object_id": "object_B",
       "holder_id": null,
-      "status": "TRANSFERRED",
+      "status": "UNKNOWN",
       "start_sec": 4.1,
       "end_sec": 4.6,
-      "interaction": "BOTH HOLDING"
+      "interaction": "BOTH_TOUCHING"
     },
     {
       "object_id": "object_B",
