@@ -1,10 +1,45 @@
 {
   "video_id": "IMG_1599",
   "scenario": "put_down_pick_up",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Person wearing a white shirt"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book",
+      "description": "Book picked up by person_A"
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 0.9
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 0.9,
+      "end_sec": 2.4
+    }
+  ],
+  "events": [
+    {
+      "event_type": "PICKUP",
+      "object_id": "object_A",
+      "from_person_id": null,
+      "to_person_id": "person_A",
+      "start_sec": 0.9,
+      "end_sec": 2.4
+    }
+  ],
+  "notes": "Person A, wearing a white shirt, picks up the book."
 }
