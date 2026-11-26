@@ -1,10 +1,87 @@
 {
   "video_id": "IMG_1591",
   "scenario": "chain_a_b_c",
+<<<<<<< HEAD
   "annotation_status": "NOT_ANNOTATED",
   "people": null,
   "objects": null,
   "possession_intervals": null,
   "events": null,
   "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+=======
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A"
+    },
+    {
+      "person_id": "person_B"
+    },
+    {
+      "person_id": "person_C"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book"
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": "person_C",
+      "status": "HELD",
+      "start_sec": 0.0,
+      "end_sec": 1.35
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNKNOWN",
+      "start_sec": 1.35,
+      "end_sec": 1.8
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 1.8,
+      "end_sec": 4.0
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNKNOWN",
+      "start_sec": 4.0,
+      "end_sec": 4.45
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_B",
+      "status": "HELD",
+      "start_sec": 4.45,
+      "end_sec": 5.958
+    }
+  ],
+  "events": [
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_A",
+      "from_person_id": "person_C",
+      "to_person_id": "person_A",
+      "start_sec": 1.35,
+      "end_sec": 1.8
+    },
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_A",
+      "from_person_id": "person_A",
+      "to_person_id": "person_B",
+      "start_sec": 4.45,
+      "end_sec": 5.958
+    }
+  ],
+  "notes": "Person C initially holds the book. The handover begins at 1.35 seconds. Both people touch the book at approximately 0.45 seconds. Person A takes possession by 1.8 seconds to second 4.0. The second handover begins at 4.45 seconds. Both people touch the book at approximately 0.45 seconds. Person B takes possession from second 4.45 to second 5.958."
+>>>>>>> 362d53b (Amir annotation)
 }

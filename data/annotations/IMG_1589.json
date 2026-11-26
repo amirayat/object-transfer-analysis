@@ -1,10 +1,62 @@
 {
   "video_id": "IMG_1589",
   "scenario": "simple_handover",
+<<<<<<< HEAD
   "annotation_status": "NOT_ANNOTATED",
   "people": null,
   "objects": null,
   "possession_intervals": null,
   "events": null,
   "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+=======
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_B"
+    },
+    {
+      "person_id": "person_C"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book"
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": "person_B",
+      "status": "HELD",
+      "start_sec": 0.0,
+      "end_sec": 2.2
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNKNOWN",
+      "start_sec": 2.2,
+      "end_sec": 2.6
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_C",
+      "status": "HELD",
+      "start_sec": 2.6,
+      "end_sec": 4.52
+    }
+  ],
+  "events": [
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_A",
+      "from_person_id": "person_B",
+      "to_person_id": "person_C",
+      "start_sec": 2.2,
+      "end_sec": 2.6
+    }
+  ],
+  "notes": "Person B initially holds the book. The handover begins at 2.2 seconds. Both people touch the book at approximately 0.4 seconds. Person C takes possession by 2.6 seconds."
+>>>>>>> 362d53b (Amir annotation)
 }
