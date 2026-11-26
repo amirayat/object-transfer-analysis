@@ -1,0 +1,10 @@
+{
+  "video_id": "IMG_1601",
+  "scenario": "put_down_pick_up",
+  "annotation_status": "NOT_ANNOTATED",
+  "people": null,
+  "objects": null,
+  "possession_intervals": null,
+  "events": null,
+  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+}
