@@ -1,10 +1,76 @@
 {
   "video_id": "IMG_1601",
   "scenario": "put_down_pick_up",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Person initially in the middle. Picks up object_A."
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book",
+      "description": "Blue book on the table, on the right. It gets picked up by person_A"
+    },
+    {
+      "object_id": "object_B",
+      "class_name": "book",
+      "description": "Black notebook on the table, in the middle."
+    },
+    {
+      "object_id": "object_C",
+      "class_name": "bottle",
+      "description": "Transparent water bottle on the table, on the left."
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 1.1
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 2.7
+    },
+    {
+      "object_id": "object_C",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 2.7
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNKNOWN",
+      "start_sec": 1.1,
+      "end_sec": 1.2
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 1.2,
+      "end_sec": 2.7
+    }
+  ],
+  "events": [
+    {
+      "event_type": "PICKUP",
+      "object_id": "object_A",
+      "from_person_id": null,
+      "to_person_id": "person_A",
+      "start_sec": 1.1,
+      "end_sec": 1.2
+    }
+  ],
+  "notes": "Book initially is laying on the table, next to another book and a bottle. Person A reachs for the book and picks it up. The pickup begins at 1.1 seconds. The book is completely lifted at 1.2 seconds. Person A takes possession by 1.5 seconds."
 }

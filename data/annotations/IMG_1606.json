@@ -1,10 +1,56 @@
 {
   "video_id": "IMG_1606",
   "scenario": "brief_occlusion",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Initial book holder. Person on the right."
+    },
+    {
+      "person_id": "person_B",
+      "description": "Final book holder. Person on the left."
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book",
+      "description": "Blue book transferred from person_A to person_B. Initially behind a pillar."
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": "person_A",
+      "status": "HELD",
+      "start_sec": 0.0,
+      "end_sec": 2.4
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNKNOWN",
+      "start_sec": 2.4,
+      "end_sec": 3.0
+    },
+    {
+      "object_id": "object_A",
+      "holder_id": "person_B",
+      "status": "HELD",
+      "start_sec": 3.0,
+      "end_sec": 4.6
+    }
+  ],
+  "events": [
+    {
+      "event_type": "HANDOVER",
+      "object_id": "object_A",
+      "from_person_id": "person_A",
+      "to_person_id": "person_B",
+      "start_sec": 2.4,
+      "end_sec": 3.0
+    }
+  ],
+  "notes": "Three persons behind the table. Initially, person A holds the book. Person A hands the book over to person C at 1.3 seconds. The handover lasts until 1.9 seconds. Person C holds the object until 3.6 seconds. Person B hand the object to person B at 3.6 seconds. The second handover lasts until 4.1 seconds. Person B holds the object until 5.1 seconds."
 }

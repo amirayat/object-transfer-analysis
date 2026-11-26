@@ -1,10 +1,70 @@
 {
   "video_id": "IMG_1602",
   "scenario": "no_transfer",
-  "annotation_status": "NOT_ANNOTATED",
-  "people": null,
-  "objects": null,
-  "possession_intervals": null,
-  "events": null,
-  "notes": "Watch the ORIGINAL video; enter actual event time intervals. events=[] means confirmed no events."
+  "annotation_status": "ANNOTATED",
+  "people": [
+    {
+      "person_id": "person_A",
+      "description": "Person initially on the left. Shakes hands with person_B."
+    },
+    {
+      "person_id": "person_B",
+      "description": "Person initially in the middle. Shakes hands with person_A, then shakes hands with person_C."
+    },
+    {
+      "person_id": "person_C",
+      "description": "Person initially on the right. Shakes hands with person_B."
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "object_A",
+      "class_name": "book",
+      "description": "Blue book on the table, on the right."
+    },
+    {
+      "object_id": "object_B",
+      "class_name": "book",
+      "description": "Black notebook on the table, in the middle."
+    },
+    {
+      "object_id": "object_C",
+      "class_name": "bottle",
+      "description": "Transparent water bottle on the table, on the left."
+    }
+  ],
+  "possession_intervals": [
+    {
+      "object_id": "object_A",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 1.1
+    },
+    {
+      "object_id": "object_B",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 2.7
+    },
+    {
+      "object_id": "object_C",
+      "holder_id": null,
+      "status": "UNHELD",
+      "start_sec": 0.0,
+      "end_sec": 2.7
+    }
+  ],
+  "events": [
+    {
+      "event_type": null,
+      "object_id": null,
+      "from_person_id": null,
+      "to_person_id": null,
+      "start_sec": 0.0,
+      "end_sec": 2.7
+    }
+  ],
+  "notes": "Three objects on the table, two books and a bottle. Three persons are standing close to the objects and interacting with one another, but they are not touching the objects."
 }
