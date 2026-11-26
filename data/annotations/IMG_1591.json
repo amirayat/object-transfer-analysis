@@ -4,19 +4,23 @@
   "annotation_status": "ANNOTATED",
   "people": [
     {
-      "person_id": "person_A"
+      "person_id": "person_A",
+      "description": "The middle person who receives the book from person_C and then passes it to person_B"
     },
     {
-      "person_id": "person_B"
+      "person_id": "person_B",
+      "description": "The last person who receives the book from person_A"
     },
     {
-      "person_id": "person_C"
+      "person_id": "person_C",
+      "description": "Initial book holder"
     }
   ],
   "objects": [
     {
       "object_id": "object_A",
-      "class_name": "book"
+      "class_name": "book",
+      "description": "Book transferred from person_C to person_A and then from person_A to person_B"
     }
   ],
   "possession_intervals": [
